@@ -1,0 +1,18 @@
+class Node(object):
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+def push(head, data):
+    res = Node(data)
+    res.next = head
+    return res
+
+def reverse(head, new = None):
+    if head == None:
+        return None
+    res = None
+    while head.next != None:
+        res = push(res, head.data)
+        head = head.next
+    return push(res, head.data)
