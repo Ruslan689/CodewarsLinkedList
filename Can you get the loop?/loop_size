@@ -1,0 +1,12 @@
+def loop_size(node):
+    first = node
+    second = node.next
+    while first != second:
+        first = first.next
+        second = second.next.next
+    first = first.next
+    l = 1
+    while first != second:
+        first = first.next
+        l += 1
+    return l
