@@ -1,0 +1,38 @@
+class Node(object):
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+def push(head, data):
+    newNode = Node(data)
+    newNode.next = head
+    return newNode
+        
+def reverse(head):
+    if head == None:
+        return None
+    res = None
+    while head.next != None:
+        res = push(res, head.data)
+        head = head.next
+    return push(res, head.data)    
+
+class Context(object):
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
+    
+def alternating_split(head):
+    if head == None or head.next == None:
+        raise IndexError
+    first = None
+    second = None
+    i = 1
+    while head != None:
+        if i%2:
+            first = push(first, head.data)
+        else:
+            second = push(second, head.data)
+        head = head.next
+        i += 1
+    return Context(reverse(first), reverse(second))
