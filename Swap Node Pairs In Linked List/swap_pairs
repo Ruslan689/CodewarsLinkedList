@@ -1,0 +1,11 @@
+from preloaded import Node
+
+def swap_pairs(head):
+    if head == None or head.next == None:
+        return head
+    res = head.next
+    head.next = head.next.next
+    res.next = head
+    if res.next.next != None and res.next.next.next != None:
+        res.next.next = swap_pairs(res.next.next)
+    return res
