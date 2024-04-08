@@ -1,0 +1,26 @@
+""" For your information:
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+"""
+def push(head, data):
+    res = Node(data)
+    res.next = head
+    return res
+
+def sorted_insert(head, data):
+    n_head = head
+    if head == None:
+        return push(None, data)
+    if data < head.data:
+        return push(head, data)
+    while head.next != None:
+        if data < head.next.data:
+            res = push(head.next, data)
+            head.next = res
+            return n_head
+        head = head.next
+    res = push(None, data)
+    head.next = res
+    return n_head
