@@ -1,0 +1,15 @@
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def remove_duplicates(head):
+    first = head
+    if head == None:
+        return None
+    while head != None and head.next != None:
+        if head.data == head.next.data:
+            head.next = head.next.next
+        else:
+            head = head.next
+    return first
